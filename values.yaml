@@ -1,0 +1,9 @@
+# Replica count
+# Image, both name and tag
+# Service type and port
+test: true
+replicaCount: 2
+
+image:
+  name: nginx
+  tag: 1.27.2
