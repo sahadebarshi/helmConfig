@@ -1,1 +1,1 @@
-This is test Hekm Chart
+This is test Helm Chart
