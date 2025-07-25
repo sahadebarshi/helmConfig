@@ -1,12 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-{{ .Chart.Name }}
-  labels:
-    app: {{ .Chart.Name }}
-    release: {{ .Release.Name }}
+  name: {{ include "myTemplate.Variable"  . }}
+  labels: {{ include "myTemplate.selectorLabel" . | nindent 4 }} 
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ if eq .Values.replicaFlag "1" }}5 {{ else }}2 {{ end }}
   selector:
     matchLabels:
         app: {{ .Chart.Name }}
@@ -22,3 +20,11 @@ spec:
             image: {{ .Values.image.name }}:{{ .Values.image.tag}}
             ports:
               - containerPort: 80
+            volumeMounts:
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      volumes:
+        - name: {{ include "test.withFunction"  . }}
+          configMap:
+            name: nginx-config

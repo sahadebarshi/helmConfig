@@ -6,11 +6,10 @@ metadata:
     app: {{ .Chart.Name }}
     release: {{ .Release.Name }}
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
      app: {{ .Chart.Name }}
      release: {{ .Release.Name }}
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      {{- include "myTemplate.portMap" . | nindent 6}}

@@ -1,0 +1,6 @@
+{{- if and (not .Values.security.userLevel.userEnable)  .Values.security.userLevel -}}
+{{- required "User not enabled or user level is not provided" .Values.security.userLevel.userLevel -}}
+{{- end -}} 
+{{- if int .Values.security.userLevel.otherUser | eq 0 -}}
+{{- fail "Can not use root user" -}}
+{{- end -}}

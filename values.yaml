@@ -3,7 +3,24 @@
 # Service type and port
 test: true
 replicaCount: 2
+replicaFlag: 0
 
 image:
   name: nginx
   tag: 1.27.2
+
+container:
+  volume:
+    name: nginx-config-volume
+
+portMap:
+  env:
+    port: 80
+    targetPort: 8080
+    nodePort: 30080
+
+security:
+  userLevel:
+    userEnable: true
+    rootUser: 0
+    otherUser: 1

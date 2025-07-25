@@ -1,5 +1,0 @@
-#{{- /*This is GO content*/}}
-#test: {{ .Values.test }}
-#labels: 
-  #{{- /*The chart label comes from the chart information*/}}
-  #chart: {{ .Chart.Name}}
