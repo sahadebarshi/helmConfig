@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
           - name: {{ .Values.image.name }}
-            image: {{ .Values.image.name }}:{{ .Values.image.tag}}
+            image: {{ .Values.image.name }}:{{ .Values.image.tag }}
             ports:
-              - containerPort: 8080
+              - containerPort: 9090
             volumeMounts:
             - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf
